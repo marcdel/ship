@@ -37,6 +37,7 @@ defmodule Ship.Manager do
   # Declare all Systems to run
   def systems do
     [
+      Ship.Systems.Attacking,
       Ship.Systems.Targeting,
       Ship.Systems.Driver
     ]
