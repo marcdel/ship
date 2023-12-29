@@ -28,6 +28,7 @@ defmodule Ship.Manager do
       Ship.Components.YPosition.add(entity, Enum.random(1..100))
       Ship.Components.XVelocity.add(entity, 0)
       Ship.Components.YVelocity.add(entity, 0)
+      Ship.Components.ImageFile.add(entity, "npc_ship.svg")
     end
 
     :ok
@@ -36,6 +37,7 @@ defmodule Ship.Manager do
   # Declare all valid Component types
   def components do
     [
+      Ship.Components.ImageFile,
       Ship.Components.PlayerSpawned,
       Ship.Components.DestroyedAt,
       Ship.Components.AttackCooldown,

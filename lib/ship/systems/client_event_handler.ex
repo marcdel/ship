@@ -9,6 +9,7 @@ defmodule Ship.Systems.ClientEventHandler do
   alias Ship.Components.AttackRange
   alias Ship.Components.AttackSpeed
   alias Ship.Components.HullPoints
+  alias Ship.Components.ImageFile
   alias Ship.Components.PlayerSpawned
   alias Ship.Components.SeekingTarget
   alias Ship.Components.XPosition
@@ -36,6 +37,7 @@ defmodule Ship.Systems.ClientEventHandler do
     YPosition.add(player, Enum.random(1..100))
     XVelocity.add(player, 0)
     YVelocity.add(player, 0)
+    ImageFile.add(player, "player_ship.svg")
     PlayerSpawned.add(player)
   end
 
