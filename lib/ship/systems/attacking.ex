@@ -11,7 +11,15 @@ defmodule Ship.Systems.Attacking do
   alias Ship.Components.AttackSpeed
   alias Ship.Components.AttackTarget
   alias Ship.Components.HullPoints
+  alias Ship.Components.ImageFile
+  alias Ship.Components.IsProjectile
+  alias Ship.Components.ProjectileDamage
+  alias Ship.Components.ProjectileTarget
   alias Ship.Components.SeekingTarget
+  alias Ship.Components.XPosition
+  alias Ship.Components.XVelocity
+  alias Ship.Components.YPosition
+  alias Ship.Components.YVelocity
   alias Ship.SystemUtils
 
   @impl ECSx.System
@@ -34,21 +42,26 @@ defmodule Ship.Systems.Attacking do
         :noop
 
       :otherwise ->
-        deal_damage(self, target)
+        spawn_projectile(self, target)
         add_cooldown(self)
     end
   end
 
-  defp deal_damage(self, target) do
+  defp spawn_projectile(self, target) do
     attack_damage = AttackDamage.get(self)
-    # Assuming one armor rating always equals one damage
-    reduction_from_armor = ArmorRating.get(target)
-    final_damage_amount = attack_damage - reduction_from_armor
+    x = XPosition.get(self)
+    y = YPosition.get(self)
+    # Armor reduction should wait until impact to be calculated
+    cannonball_entity = Ecto.UUID.generate()
 
-    target_current_hp = HullPoints.get(target)
-    target_new_hp = target_current_hp - final_damage_amount
-
-    HullPoints.update(target, target_new_hp)
+    IsProjectile.add(cannonball_entity)
+    XPosition.add(cannonball_entity, x)
+    YPosition.add(cannonball_entity, y)
+    XVelocity.add(cannonball_entity, 0)
+    YVelocity.add(cannonball_entity, 0)
+    ImageFile.add(cannonball_entity, "cannonball.svg")
+    ProjectileTarget.add(cannonball_entity, target)
+    ProjectileDamage.add(cannonball_entity, attack_damage)
   end
 
   defp add_cooldown(self) do

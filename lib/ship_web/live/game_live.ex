@@ -3,6 +3,7 @@ defmodule ShipWeb.GameLive do
 
   alias Ship.Components.HullPoints
   alias Ship.Components.ImageFile
+  alias Ship.Components.IsProjectile
   alias Ship.Components.PlayerSpawned
   alias Ship.Components.XPosition
   alias Ship.Components.YPosition
@@ -32,6 +33,7 @@ defmodule ShipWeb.GameLive do
       current_hp: nil,
       player_ship_image_file: nil,
       other_ships: [],
+      projectiles: [],
       x_offset: 0,
       y_offset: 0,
       loading: true
@@ -45,6 +47,7 @@ defmodule ShipWeb.GameLive do
       socket
       |> assign_player_ship()
       |> assign_other_ships()
+      |> assign_projectiles()
       |> assign_offsets()
       |> assign(loading: false)
 
@@ -58,6 +61,7 @@ defmodule ShipWeb.GameLive do
       socket
       |> assign_player_ship()
       |> assign_other_ships()
+      |> assign_projectiles()
       |> assign_offsets()
 
     {:noreply, socket}
@@ -95,6 +99,18 @@ defmodule ShipWeb.GameLive do
       image = ImageFile.get(ship)
       {ship, x, y, image}
     end
+  end
+
+  defp assign_projectiles(socket) do
+    projectiles =
+      for projectile <- IsProjectile.get_all() do
+        x = XPosition.get(projectile)
+        y = YPosition.get(projectile)
+        image = ImageFile.get(projectile)
+        {projectile, x, y, image}
+      end
+
+    assign(socket, projectiles: projectiles)
   end
 
   defp assign_offsets(socket) do
@@ -174,6 +190,15 @@ defmodule ShipWeb.GameLive do
             height="1"
             href={~p"/images/#{@player_ship_image_file}"}
           />
+          <%= for {_entity, x, y, image_file} <- @projectiles do %>
+            <image
+              x={x}
+              y={y}
+              width="1"
+              height="1"
+              href={~p"/images/#{image_file}"}
+            />
+          <% end %>
           <%= for {_entity, x, y, image_file} <- @other_ships do %>
             <image
               x={x}
