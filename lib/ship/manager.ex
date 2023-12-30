@@ -37,6 +37,7 @@ defmodule Ship.Manager do
   # Declare all valid Component types
   def components do
     [
+      Ship.Components.IsPlayer,
       Ship.Components.IsProjectile,
       Ship.Components.ProjectileDamage,
       Ship.Components.ProjectileTarget,

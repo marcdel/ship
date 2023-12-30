@@ -7,6 +7,7 @@ defmodule Ship.Systems.Targeting do
   alias Ship.Components.AttackRange
   alias Ship.Components.AttackTarget
   alias Ship.Components.HullPoints
+  alias Ship.Components.IsPlayer
   alias Ship.Components.SeekingTarget
   alias Ship.SystemUtils
 
@@ -28,7 +29,7 @@ defmodule Ship.Systems.Targeting do
     # For now, we're assuming anything which has HullPoints can be attacked
     HullPoints.get_all()
     # ... except your own ship!
-    |> Enum.reject(fn {possible_target, _hp} -> possible_target == self end)
+    |> Enum.filter(fn {possible_target, _hp} -> attackable?(possible_target, self) end)
     |> Enum.find(fn {possible_target, _hp} ->
       distance_between = SystemUtils.distance_between(possible_target, self)
       range = AttackRange.get(self)
@@ -40,5 +41,10 @@ defmodule Ship.Systems.Targeting do
   defp add_target(self, target) do
     SeekingTarget.remove(self)
     AttackTarget.add(self, target)
+  end
+
+  defp attackable?(target, self) do
+    target != self &&
+      (IsPlayer.exists?(target) || IsPlayer.exists?(self))
   end
 end

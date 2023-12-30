@@ -10,6 +10,7 @@ defmodule Ship.Systems.ClientEventHandler do
   alias Ship.Components.AttackSpeed
   alias Ship.Components.HullPoints
   alias Ship.Components.ImageFile
+  alias Ship.Components.IsPlayer
   alias Ship.Components.PlayerSpawned
   alias Ship.Components.SeekingTarget
   alias Ship.Components.XPosition
@@ -27,6 +28,7 @@ defmodule Ship.Systems.ClientEventHandler do
   defp process_one({player, :spawn_ship}) do
     # We'll give player ships better stats than the enemy ships
     # (otherwise the game would be very short!)
+    IsPlayer.add(player)
     ArmorRating.add(player, 2)
     AttackDamage.add(player, 6)
     AttackRange.add(player, 15)
