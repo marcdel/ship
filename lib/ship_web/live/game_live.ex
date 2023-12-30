@@ -1,5 +1,5 @@
 defmodule ShipWeb.GameLive do
-  use ShipWeb, :live_view
+  use ShipWeb, :game_view
 
   alias Ship.Components.HullPoints
   alias Ship.Components.ImageFile
@@ -15,7 +15,7 @@ defmodule ShipWeb.GameLive do
       socket
       |> assign(player_entity: player.id)
       |> assign(keys: MapSet.new())
-      |> assign(game_world_size: 100, screen_height: 30, screen_width: 50)
+      |> assign(game_world_size: 100, screen_height: 27, screen_width: 50)
       |> assign_loading_state()
 
     if connected?(socket) do
@@ -191,24 +191,12 @@ defmodule ShipWeb.GameLive do
             href={~p"/images/#{@player_ship_image_file}"}
           />
           <%= for {_entity, x, y, image_file} <- @projectiles do %>
-            <image
-              x={x}
-              y={y}
-              width="1"
-              height="1"
-              href={~p"/images/#{image_file}"}
-            />
+            <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
           <%= for {_entity, x, y, image_file} <- @other_ships do %>
-            <image
-              x={x}
-              y={y}
-              width="1"
-              height="1"
-              href={~p"/images/#{image_file}"}
-            />
+            <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
-          <text x={@x_offset} y={@y_offset + 1} style="font: 1px serif">
+          <text x={@x_offset + 1} y={@y_offset + 2} style="font: 1px serif">
             Hull Points: <%= @current_hp %>
           </text>
         <% end %>
