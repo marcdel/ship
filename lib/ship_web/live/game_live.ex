@@ -87,7 +87,9 @@ defmodule ShipWeb.GameLive do
 
   defp assign_other_ships(socket) do
     other_ships =
-      Enum.reject(all_ships(), fn {entity, _, _, _, _} -> entity == socket.assigns.player_entity end)
+      Enum.reject(all_ships(), fn {entity, _, _, _, _} ->
+        entity == socket.assigns.player_entity
+      end)
 
     assign(socket, other_ships: other_ships)
   end
@@ -170,6 +172,14 @@ defmodule ShipWeb.GameLive do
   defp keyup(key) when key in ~w(d D ArrowRight), do: {:stop_move, :east}
   defp keyup(_key), do: :noop
 
+  defp health_bar_color(hp) do
+    cond do
+      hp > 50 -> "green"
+      hp > 25 -> "yellow"
+      true -> "red"
+    end
+  end
+
   def render(assigns) do
     ~H"""
     <div id="game" phx-window-keydown="keydown" phx-window-keyup="keyup">
@@ -184,7 +194,13 @@ defmodule ShipWeb.GameLive do
             Loading...
           </text>
         <% else %>
-          <rect x={@x_coord} y={@y_coord - 1} width={@current_hp / 75} height="0.2" fill="green" />
+          <rect
+            x={@x_coord}
+            y={@y_coord - 1}
+            width={@current_hp / 75}
+            height="0.2"
+            fill={health_bar_color(@current_hp)}
+          />
           <image
             x={@x_coord}
             y={@y_coord}
@@ -196,7 +212,13 @@ defmodule ShipWeb.GameLive do
             <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
           <%= for {entity, x, y, hp, image_file} <- @other_ships do %>
-            <rect x={x} y={y - 1} width={hp / 75} height="0.2" fill="green" />
+            <rect
+              x={x}
+              y={y - 1}
+              width={hp / 75}
+              height="0.2"
+              fill={health_bar_color(hp)}
+            />
             <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
           <text x={@x_offset + 1} y={@y_offset + 2} style="font: 1px serif">
