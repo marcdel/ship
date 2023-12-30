@@ -212,13 +212,7 @@ defmodule ShipWeb.GameLive do
             <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
           <%= for {entity, x, y, hp, image_file} <- @other_ships do %>
-            <rect
-              x={x}
-              y={y - 1}
-              width={hp / 75}
-              height="0.2"
-              fill={health_bar_color(hp)}
-            />
+            <rect x={x} y={y - 1} width={hp / 75} height="0.2" fill={health_bar_color(hp)} />
             <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
           <text x={@x_offset + 1} y={@y_offset + 2} style="font: 1px serif">
