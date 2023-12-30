@@ -1,59 +1,38 @@
-<svg
-    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-    xmlns:cc="http://web.resource.org/cc/"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns:ns1="http://sozi.baierouge.fr"
-    id="svg1"
-    sodipodi:docname="kbattleship.svg"
-    viewBox="0 0 60 60"
-    sodipodi:version="0.32"
-    version="1.0"
-    inkscape:version="0.38.1"
-    sodipodi:docbase="/home/danny/flat/scalable/apps"
-  >
-  <path
-      id="path876"
-      style="stroke-linejoin:round;fill-rule:evenodd;stroke:#333333;stroke-linecap:round;stroke-width:1.875;fill:#7f7f7f"
-      transform="translate(4.4986 3.5989)"
-      d="m12.056 30.129l6.298-20.154 7.198 0.0001v20.874l-13.496-0.72z"
-      sodipodi:stroke-cmyk="(0.0000000 0.0000000 0.0000000 0.80000001)"
-  />
-  <path
-      id="path877"
-      style="stroke-linejoin:round;fill-rule:evenodd;stroke:#333333;stroke-linecap:round;stroke-width:1.875;fill:#4c4c4c"
-      transform="translate(4.4986 4.4986)"
-      d="m12.416 13.034l-1.437 5.364h21.231v-5.724l-19.794 0.36z"
-      sodipodi:stroke-cmyk="(0.0000000 0.0000000 0.0000000 0.80000001)"
-  />
-  <rect
-      id="rect878"
-      style="stroke-linejoin:round;fill-rule:evenodd;stroke:#333333;stroke-linecap:round;stroke-width:1.875;fill:#4c4c4c"
-      rx=".25652"
-      transform="matrix(.58784 -.80898 .80898 .58784 9.9018 3.0215)"
-      height="7.7377"
-      width="6.8379"
-      sodipodi:stroke-cmyk="(0.0000000 0.0000000 0.0000000 0.80000001)"
-      y="8.7154"
-      x="-24.113"
-  />
-  <path
-      id="path879"
-      style="stroke-linejoin:round;fill-rule:evenodd;stroke:#333333;stroke-linecap:round;stroke-width:1.875;fill:#7f7f7f"
-      transform="translate(.35989 3.9588)"
-      d="m35.989 28.33l3.963-6.864h13.132v6.504l-17.095 0.36z"
-      sodipodi:stroke-cmyk="(0.0000000 0.0000000 0.0000000 0.80000001)"
-  />
-  <path
-      id="path875"
-      style="stroke-linejoin:round;fill-rule:evenodd;stroke:#333333;stroke-linecap:round;stroke-width:3.125;fill:#7f7f7f"
-      d="m6.4781 27.07l7.6799 13.301h38.026l7.011-12.994-52.717-0.307z"
-      sodipodi:nodetypes="ccccc"
-      transform="translate(-2.5192 4.1388)"
-      sodipodi:stroke-cmyk="(0.0000000 0.0000000 0.0000000 0.80000001)"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" x="0px" y="0px" transform="rotate(90)">
+    <g>
+        <polygon points="25 40.413 25 39 25 38 25 27.388 21 28.721 21 38 21 46 25 46 25 40.413"/>
+        <path d="M35.328,40.992,37,39.878v-.409L32,35.3l-5,4.167v.409l1.672,1.114A5.983,5.983,0,0,0,35.328,40.992Z"/>
+        <path d="M37,47V42.281l-.563.375a7.978,7.978,0,0,1-8.875,0L27,42.281V50H37Z"/>
+        <path d="M7,12.5a1.5,1.5,0,0,0-3,0V14H7Z"/>
+        <path d="M8,39v.382l6.114,3.057a7.013,7.013,0,0,1,2.566,2.193L19,47.88V39H8Z"/>
+        <path d="M8,33v4h4V30.989L7.162,23.545A1,1,0,0,1,7,23V16H4V27.649l3.781,4.726A1,1,0,0,1,8,33Z"/>
+        <polygon points="6 40 6 38 6 33.351 4 30.851 4 41 6 41 6 40"/>
+        <path d="M6,47a1,1,0,0,0-2,0v1H6Z"/>
+        <path d="M56,33a1,1,0,0,1,.219-.625L60,27.649V16H57v6.688a1,1,0,0,1-.152.53L52,30.975v5.713h4Z"/>
+        <path d="M60,12.5a1.5,1.5,0,0,0-3,0v1.188h3Z"/>
+        <polygon points="58 40 58 41 60 41 60 30.851 58 33.351 58 38 58 40"/>
+        <path d="M30.043,12a1,1,0,0,1,.789.444L32,14.2l1.168-1.752A1,1,0,0,1,33.957,12a.972.972,0,0,1,.824.374l2.129,2.662c0-.049-.01-.1-.016-.148a13.982,13.982,0,0,0-.247-1.469c-.008-.038-.021-.076-.03-.115a13.965,13.965,0,0,0-.4-1.361c-.029-.083-.056-.167-.086-.25a13.834,13.834,0,0,0-.58-1.343c-.043-.088-.089-.174-.134-.26a14.222,14.222,0,0,0-.767-1.316L32,4.8,29.351,8.775a14.222,14.222,0,0,0-.767,1.316c-.045.086-.091.172-.134.26a13.834,13.834,0,0,0-.58,1.343c-.03.083-.057.167-.086.25a13.965,13.965,0,0,0-.4,1.361c-.009.039-.022.077-.03.115a13.982,13.982,0,0,0-.247,1.469c-.006.049-.011.1-.016.148l2.129-2.662A.987.987,0,0,1,30.043,12Z"/>
+        <polygon points="50 31.379 45 29.456 45 37 50 37 50 31.379"/>
+        <path d="M28.105,30.447A1,1,0,0,1,28,30V27a.985.985,0,0,1,.081-.394l3-7a1,1,0,0,1,1.838,0l3,7A.985.985,0,0,1,36,27v3a1,1,0,0,1-.1.447l-1.94,3.88L37,36.865V18.351l-2.927-3.659-1.241,1.863a1.039,1.039,0,0,1-1.664,0l-1.241-1.863L27,18.351V36.865l3.045-2.538Z"/>
+        <polygon points="32 22.539 30 27.205 30 29.764 31.618 33 32.382 33 34 29.764 34 27.205 32 22.539"/>
+        <path d="M56,39H45v8.88l2.32-3.248a7.013,7.013,0,0,1,2.566-2.193L56,39.382Z"/>
+        <polygon points="39 38 39 39 39 40.413 39 46 43 46 43 38 43 28.721 39 27.388 39 38"/>
+        <polygon points="14 37 19 37 19 29.456 14 31.379 14 37"/>
+        <rect x="39" y="48" width="4" height="2"/>
+        <path d="M34.984,52H29.016A4.985,4.985,0,0,0,27,56H37A4.985,4.985,0,0,0,34.984,52Z"/>
+        <path d="M60,47a1,1,0,0,0-2,0v1h2Z"/>
+        <rect x="21" y="48" width="4" height="2"/>
+        <rect x="2" y="52" width="2" height="2"/>
+        <rect x="6" y="52" width="2" height="2"/>
+        <rect x="25" y="60" width="2" height="2"/>
+        <rect x="29" y="60" width="2" height="2"/>
+        <rect x="33" y="60" width="2" height="2"/>
+        <rect x="37" y="60" width="2" height="2"/>
+        <rect x="56" y="52" width="2" height="2"/>
+        <rect x="60" y="52" width="2" height="2"/>
+        <rect x="17" y="23" width="2" height="2"/>
+        <rect x="21" y="22" width="2" height="2"/>
+        <rect x="45" y="23" width="2" height="2"/>
+        <rect x="41" y="22" width="2" height="2"/>
+    </g>
 </svg>

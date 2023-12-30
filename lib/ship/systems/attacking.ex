@@ -52,16 +52,16 @@ defmodule Ship.Systems.Attacking do
     x = XPosition.get(self)
     y = YPosition.get(self)
     # Armor reduction should wait until impact to be calculated
-    cannonball_entity = Ecto.UUID.generate()
+    missile_entity = Ecto.UUID.generate()
 
-    IsProjectile.add(cannonball_entity)
-    XPosition.add(cannonball_entity, x)
-    YPosition.add(cannonball_entity, y)
-    XVelocity.add(cannonball_entity, 0)
-    YVelocity.add(cannonball_entity, 0)
-    ImageFile.add(cannonball_entity, "cannonball.svg")
-    ProjectileTarget.add(cannonball_entity, target)
-    ProjectileDamage.add(cannonball_entity, attack_damage)
+    IsProjectile.add(missile_entity)
+    XPosition.add(missile_entity, x)
+    YPosition.add(missile_entity, y)
+    XVelocity.add(missile_entity, 0)
+    YVelocity.add(missile_entity, 0)
+    ImageFile.add(missile_entity, "missile.svg")
+    ProjectileTarget.add(missile_entity, target)
+    ProjectileDamage.add(missile_entity, attack_damage)
   end
 
   defp add_cooldown(self) do

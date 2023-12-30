@@ -15,7 +15,7 @@ defmodule Ship.Systems.Projectile do
   alias Ship.Components.YPosition
   alias Ship.Components.YVelocity
 
-  @cannonball_speed 3
+  @missile_speed 3
 
   @impl ECSx.System
   def run do
@@ -40,7 +40,7 @@ defmodule Ship.Systems.Projectile do
       0 ->
         collision(projectile, target)
 
-      distance when distance / @cannonball_speed <= 1 ->
+      distance when distance / @missile_speed <= 1 ->
         move_directly_to_target(projectile, {dx, dy})
 
       distance ->
@@ -100,7 +100,7 @@ defmodule Ship.Systems.Projectile do
   defp adjust_velocity_towards_target(projectile, {distance, dx, dy}) do
     # We know what is needed, but we need to slow it down, so its travel
     # will take more than one tick.  Otherwise the player will not see it!
-    ticks_away = ceil(distance / @cannonball_speed)
+    ticks_away = ceil(distance / @missile_speed)
     adjusted_dx = div(dx, ticks_away)
     adjusted_dy = div(dy, ticks_away)
 
