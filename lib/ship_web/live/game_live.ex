@@ -87,7 +87,7 @@ defmodule ShipWeb.GameLive do
 
   defp assign_other_ships(socket) do
     other_ships =
-      Enum.reject(all_ships(), fn {entity, _, _, _} -> entity == socket.assigns.player_entity end)
+      Enum.reject(all_ships(), fn {entity, _, _, _, _} -> entity == socket.assigns.player_entity end)
 
     assign(socket, other_ships: other_ships)
   end
@@ -96,8 +96,9 @@ defmodule ShipWeb.GameLive do
     for {ship, _hp} <- HullPoints.get_all() do
       x = XPosition.get(ship)
       y = YPosition.get(ship)
+      hp = HullPoints.get(ship)
       image = ImageFile.get(ship)
-      {ship, x, y, image}
+      {ship, x, y, hp, image}
     end
   end
 
@@ -183,6 +184,7 @@ defmodule ShipWeb.GameLive do
             Loading...
           </text>
         <% else %>
+          <rect x={@x_coord} y={@y_coord - 1} width={@current_hp / 75} height="0.2" fill="green" />
           <image
             x={@x_coord}
             y={@y_coord}
@@ -193,7 +195,8 @@ defmodule ShipWeb.GameLive do
           <%= for {_entity, x, y, image_file} <- @projectiles do %>
             <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
-          <%= for {_entity, x, y, image_file} <- @other_ships do %>
+          <%= for {entity, x, y, hp, image_file} <- @other_ships do %>
+            <rect x={x} y={y - 1} width={hp / 75} height="0.2" fill="green" />
             <image x={x} y={y} width="1" height="1" href={~p"/images/#{image_file}"} />
           <% end %>
           <text x={@x_offset + 1} y={@y_offset + 2} style="font: 1px serif">
